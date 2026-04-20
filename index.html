@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RONANOCfitness | Online Transformation Coaching</title>
+  <meta name="description" content="Online fitness coaching built around you. Personalised nutrition, training plans and real accountability. €20/week. 2-week money back guarantee.">
+  <meta name="keywords" content="online fitness coaching, personal trainer Ireland, nutrition coaching, transformation coaching, online PT">
+  <meta name="author" content="RONANOCfitness">
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="RONANOCfitness | Online Transformation Coaching">
+  <meta property="og:description" content="Personalised nutrition & training coaching built around your life. Real results, no fad diets. €20/week.">
+  <meta property="og:image" content="https://ronanoc.fitness/og-image.jpg">
+  <meta property="og:url" content="https://ronanoc.fitness">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RONANOCfitness | Online Transformation Coaching">
+  <meta name="twitter:description" content="Personalised nutrition & training coaching. €20/week. 2-week money back guarantee.">
+
+  <!-- Favicon: inline SVG as data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D0D0D'/><text x='2' y='24' font-family='Arial Narrow,sans-serif' font-size='18' font-weight='900' fill='%23D42B2B' letter-spacing='-1'>ROC</text></svg>">
+
+  <!-- JSON-LD structured data -->
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness"],"priceRange":"€20/week","serviceType":"Online Fitness Coaching"}</script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { background: #0D0D0D; }
+    ::-webkit-scrollbar { display: none; }
+
+    /* Hide phone number text on small screens, show icon only */
+    .phone-label { display: none; }
+    @media (min-width: 420px) { .phone-label { display: inline; } }
+
+    /* Fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Light mode */
+    body[data-theme="light"] { background: #FFFFFF; }
+  </style>
+</head>
+<body id="hero">
+  <div id="root"></div>
+
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="Instagram.jsx"></script>
+  <script type="text/babel" src="Testimonials.jsx"></script>
+  <script type="text/babel" src="Transformations.jsx"></script>
+  <script type="text/babel" src="Pricing.jsx"></script>
+  <script type="text/babel" src="Includes.jsx"></script>
+  <script type="text/babel" src="FAQ.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "theme": "dark",
+      "heroHeadline": "Transform Your Body. Transform Your Life.",
+      "ctaLabel": "Start Your Transformation",
+      "accentColor": "#D42B2B"
+    }/*EDITMODE-END*/;
+
+    function CookieBanner() {
+      const [visible, setVisible] = React.useState(() => {
+        try { return !localStorage.getItem('rf_cookies_accepted'); } catch { return true; }
+      });
+      if (!visible) return null;
+      const accept = () => { try { localStorage.setItem('rf_cookies_accepted', '1'); } catch {} setVisible(false); };
+      return (
+        <div style={{
+          position: 'fixed', bottom: 80, left: 12, right: 12, zIndex: 996,
+          background: '#1A1A1A', border: '1px solid #2A2A2A', borderRadius: 4,
+          padding: '16px 18px', display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+          maxWidth: 480, margin: '0 auto',
+        }}>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: '#aaa', margin: 0, lineHeight: 1.5, flex: 1, minWidth: 200 }}>
+            We use cookies to improve your experience. By using this site you agree to our use of cookies.{' '}
+            <a href="privacy-policy.html" style={{ color: '#D42B2B', textDecoration: 'underline' }}>Learn more</a>
+          </p>
+          <button onClick={accept} style={{
+            background: '#D42B2B', color: '#fff', border: 'none', borderRadius: 0,
+            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+            letterSpacing: '0.1em', textTransform: 'uppercase',
+            padding: '10px 18px', cursor: 'pointer', flexShrink: 0,
+          }}>Got it</button>
+        </div>
+      );
+    }
+
+    function App() {
+      const saved = (() => { try { return localStorage.getItem('rf_theme') || TWEAK_DEFAULTS.theme; } catch { return TWEAK_DEFAULTS.theme; } })();
+      const [theme, setTheme] = React.useState(saved);
+      const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+      const [showTweaks, setShowTweaks] = React.useState(false);
+
+      React.useEffect(() => {
+        document.body.setAttribute('data-theme', theme);
+        try { localStorage.setItem('rf_theme', theme); } catch {}
+      }, [theme]);
+
+      // Scroll fade-in
+      React.useEffect(() => {
+        const els = document.querySelectorAll('.fade-in');
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        els.forEach(el => obs.observe(el));
+        return () => obs.disconnect();
+      }, []);
+
+      // Tweaks panel communication
+      React.useEffect(() => {
+        const handler = (e) => {
+          if (e.data?.type === '__activate_edit_mode') setShowTweaks(true);
+          if (e.data?.type === '__deactivate_edit_mode') setShowTweaks(false);
+        };
+        window.addEventListener('message', handler);
+        window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+        return () => window.removeEventListener('message', handler);
+      }, []);
+
+      const toggleTheme = () => {
+        const next = theme === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { theme: next } }, '*');
+      };
+
+      const bg = theme === 'light' ? '#FFFFFF' : '#0D0D0D';
+      const WHATSAPP_NUMBER = '353833604182';
+
+      return (
+        <div style={{ background: bg, minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
+          <Nav theme={theme} onToggle={toggleTheme} />
+
+          <div id="hero-section">
+            <Hero theme={theme} headline={tweaks.heroHeadline} ctaLabel={tweaks.ctaLabel} accentColor={tweaks.accentColor} />
+          </div>
+
+          <div className="fade-in">
+            <StatBar theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <Testimonials theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <Transformations theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <Pricing theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <Includes theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <FAQ theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <CTASection theme={theme} />
+          </div>
+
+          <div className="fade-in">
+            <Instagram theme={theme} />
+          </div>
+
+          <Footer theme={theme} />
+
+          {/* Sticky CTA bar */}
+          <div style={{
+            position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 97,
+            background: '#D42B2B',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '12px 20px',
+            boxShadow: '0 -4px 20px rgba(0,0,0,0.4)',
+          }}>
+            <div>
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 18, color: '#fff', lineHeight: 1, letterSpacing: '0.05em' }}>Plans from €10 / week</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 2 }}>2-week money back guarantee</div>
+            </div>
+            <a href={`https://wa.me/353833604182?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F`}
+              target="_blank" rel="noopener noreferrer"
+              style={{
+              background: '#fff', color: '#D42B2B',
+              fontFamily: "'DM Sans', sans-serif", fontSize: 13,
+              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+              padding: '10px 20px', textDecoration: 'none', borderRadius: 0, flexShrink: 0,
+            }}>Get Started</a>
+          </div>
+
+          {/* WhatsApp floating button */}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F`}
+            target="_blank" rel="noopener noreferrer"
+            title="Message on WhatsApp"
+            style={{
+              position: 'fixed', bottom: 88, right: 20, zIndex: 998,
+              width: 52, height: 52, borderRadius: '50%',
+              background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35)', textDecoration: 'none',
+            }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.85L.057 23.428a.5.5 0 0 0 .609.61l5.627-1.474A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.376l-.36-.214-3.733.979.997-3.648-.235-.374A9.818 9.818 0 1 1 12 21.818z"/>
+            </svg>
+          </a>
+
+          {/* GDPR Cookie Banner */}
+          <CookieBanner />
+
+          {/* Tweaks Panel */}
+          {showTweaks && (
+            <div style={{
+              position: 'fixed', bottom: 20, right: 20, zIndex: 999,
+              background: '#1A1A1A', border: '1px solid #2A2A2A',
+              borderRadius: 4, padding: '20px', width: 240,
+              fontFamily: "'DM Sans', sans-serif",
+              boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            }}>
+              <div style={{ color: '#888', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>Tweaks</div>
+
+              <div style={{ marginBottom: 14 }}>
+                <div style={{ color: '#666', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Mode</div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  {['dark', 'light'].map(m => (
+                    <button key={m} onClick={() => { setTheme(m); window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { theme: m } }, '*'); }}
+                      style={{ flex: 1, padding: '8px 0', fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'pointer', border: 'none', borderRadius: 2, background: theme === m ? '#D42B2B' : '#2A2A2A', color: '#fff' }}>
+                      {m}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 14 }}>
+                <div style={{ color: '#666', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Accent Color</div>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {['#D42B2B', '#E05C1A', '#1A7AD4', '#2B9E4A'].map(c => (
+                    <div key={c} onClick={() => { setTweaks(t => ({...t, accentColor: c})); window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: c } }, '*'); }}
+                      style={{ width: 28, height: 28, background: c, borderRadius: 2, cursor: 'pointer', border: tweaks.accentColor === c ? '2px solid #fff' : '2px solid transparent' }} />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div style={{ color: '#666', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>CTA Label</div>
+                <input value={tweaks.ctaLabel}
+                  onChange={e => { setTweaks(t => ({...t, ctaLabel: e.target.value})); window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { ctaLabel: e.target.value } }, '*'); }}
+                  style={{ width: '100%', background: '#111', color: '#fff', border: '1px solid #2A2A2A', borderRadius: 2, padding: '7px 10px', fontFamily: "'DM Sans', sans-serif", fontSize: 13, outline: 'none' }} />
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); display: flex; gap: 0; }
+  .dark { background: #0D0D0D; padding: 32px 40px; flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 24px; }
+  .light { background: #FFFFFF; padding: 32px 40px; flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 24px; }
+  .logo { line-height: 1; display: flex; align-items: center; gap: 10px; }
+  .logo span.r { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; color: #D42B2B; }
+  .logo span.div { width: 1px; height: 28px; background: #555; flex-shrink: 0; }
+  .logo span.f { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.02em; color: #ffffff; }
+  .logo-light span.div { background: #C0C0C0; }
+  .logo-light span.f { color: #0D0D0D; }
+  .meta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head><body>
+<div class="dark">
+  <div class="logo"><span class="r">RONANOC</span><span class="div"></span><span class="f">fitness</span></div>
+  <div class="meta" style="color:#555">Dark Mode</div>
+</div>
+<div class="light">
+  <div class="logo logo-light"><span class="r">RONANOC</span><span class="div"></span><span class="f">fitness</span></div>
+  <div class="meta" style="color:#aaa">Light Mode</div>
+</div>
+</body></html>

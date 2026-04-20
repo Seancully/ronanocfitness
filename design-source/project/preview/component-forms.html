@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-primary); padding: 28px 24px; font-family: var(--font-body); display: flex; flex-direction: column; gap: 16px; max-width: 380px; }
+  label { color: #888; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+  input, select { background: #1F1F1F; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 16px; padding: 14px 16px; border: 1px solid #2A2A2A; border-radius: 4px; width: 100%; box-sizing: border-box; outline: none; }
+  input::placeholder { color: #555; }
+  input.focused { border-color: #D42B2B; }
+  input.error { border-color: #B82424; }
+  .error-msg { color: #D42B2B; font-size: 12px; margin-top: 4px; }
+</style>
+</head><body>
+<div>
+  <label>Full Name</label>
+  <input type="text" placeholder="Your name">
+</div>
+<div>
+  <label>Email</label>
+  <input class="focused" type="email" value="ronan@email.com" style="border-color:#D42B2B">
+</div>
+<div>
+  <label>Goal</label>
+  <select><option>Lose fat</option><option>Build muscle</option><option>Both</option></select>
+</div>
+<div>
+  <label>Phone</label>
+  <input class="error" type="tel" value="abc" style="border-color:#D42B2B">
+  <div class="error-msg">Please enter a valid phone number</div>
+</div>
+</body></html>
