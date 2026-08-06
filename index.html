@@ -27,7 +27,7 @@
   
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness"],"priceRange":"€20/week","serviceType":"Online Fitness Coaching"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness","https://tiktok.com/@ronanocfitness","https://youtube.com/@ronanocfitness"],"priceRange":"€20/week","serviceType":"Online Fitness Coaching"}</script>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -47,13 +47,46 @@
 
     /* Light mode */
     body[data-theme="light"] { background: #FFFFFF; }
+
+    /* Socials grid */
+    .socials-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 700px) {
+      .socials-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Socials cards */
+    .social-card {
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .social-card:hover,
+    .social-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: transparent;
+      box-shadow: 0 12px 32px var(--glow);
+    }
+    .social-card:focus-visible { outline: 2px solid #D42B2B; outline-offset: 3px; }
+    .social-wash { transition: opacity 0.22s ease; pointer-events: none; }
+    .social-card:hover .social-wash,
+    .social-card:focus-visible .social-wash { opacity: 0.10; }
+    .social-icon { transition: transform 0.22s ease; }
+    .social-card:hover .social-icon,
+    .social-card:focus-visible .social-icon { transform: scale(1.06) rotate(-3deg); }
+    .social-arrow { transition: transform 0.22s ease; }
+    .social-card:hover .social-arrow,
+    .social-card:focus-visible .social-arrow { transform: translateX(4px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .social-card, .social-icon, .social-arrow, .social-wash { transition: none; }
+      .social-card:hover, .social-card:focus-visible { transform: none; }
+      .social-card:hover .social-icon { transform: none; }
+    }
   </style>
 </head>
 <body id="hero">
   <div id="root"></div>
 
   <script type="text/babel" src="Hero.jsx"></script>
-  <script type="text/babel" src="Instagram.jsx"></script>
+  <script type="text/babel" src="Socials.jsx"></script>
   <script type="text/babel" src="Testimonials.jsx"></script>
   <script type="text/babel" src="Transformations.jsx"></script>
   <script type="text/babel" src="Pricing.jsx"></script>
@@ -176,7 +209,7 @@
           </div>
 
           <div className="fade-in">
-            <Instagram theme={theme} />
+            <Socials theme={theme} />
           </div>
 
           <Footer theme={theme} />

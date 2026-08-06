@@ -1,7 +1,30 @@
 // Testimonials.jsx
 
-// Real client testimonials will be added here once collected.
-const TESTIMONIALS = [];
+// Real client testimonials, transcribed from WhatsApp messages Ronan collected.
+// Surnames reduced to an initial — the raw screenshots show full names and
+// profile photos, which shouldn't go on a public page without each client's ok.
+const TESTIMONIALS = [
+  {
+    quote: "Brilliant coaching service. Constant feedback and communication, with everything adapted around my own routine and GAA training. The plan was practical, easy to stick to, and helped me get back into playable shape while improving my fitness and weight. Highly recommend.",
+    name: "Caelum O'B.",
+    goal: "GAA / Sports Performance",
+  },
+  {
+    quote: "Appreciate the coaching for the past month, definitely helped me get to that next level. You should be charging more.",
+    name: "Matthew B.",
+    goal: "Next Level Physique",
+  },
+  {
+    quote: "You prove everyday I made the right decision having you as my coach. Thanks lad.",
+    name: "Emmet B.",
+    goal: "Fat Loss & Muscle",
+  },
+  {
+    quote: "…helped me nail what I was missing on, and we got that and more. Before last holiday I was never in as good shape in my life.",
+    name: "Online Client",
+    goal: "Holiday Shred",
+  },
+];
 
 function StarRow() {
   return <div style={{ color: '#F5C518', fontSize: 14, letterSpacing: 3, marginBottom: 12 }}>★★★★★</div>;
@@ -49,8 +72,13 @@ function Testimonials({ theme }) {
           What Clients Say
         </div>
         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(36px, 10vw, 48px)', lineHeight: 1, letterSpacing: '0.02em', textTransform: 'uppercase', color: fg, margin: 0 }}>
-          Be One of the First
+          {TESTIMONIALS.length === 0 ? 'Be One of the First' : 'In Their Own Words'}
         </h2>
+        {TESTIMONIALS.length > 0 && (
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: muted, margin: '12px 0 0', lineHeight: 1.6 }}>
+            Swipe to read more →
+          </p>
+        )}
       </div>
       {TESTIMONIALS.length === 0 ? (
         <div style={{ padding: '0 24px' }}>
@@ -70,6 +98,11 @@ function Testimonials({ theme }) {
       ) : (
         <div style={{
           display: 'flex', gap: 14, overflowX: 'auto',
+          // `safe` centers the row when it fits (laptops, monitors) but falls
+          // back to flex-start when it overflows — without it, a centered
+          // overflowing row clips its first card out of scroll reach.
+          justifyContent: 'safe center',
+          alignItems: 'stretch',
           padding: '4px 24px 16px', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch',
         }}>

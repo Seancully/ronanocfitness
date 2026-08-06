@@ -59,6 +59,10 @@ function Footer({ theme }) {
         <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', justifyContent: 'center' }}>
           <a href="https://instagram.com/ronanocfitness" target="_blank" rel="noopener noreferrer"
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>Instagram</a>
+          <a href="https://tiktok.com/@ronanocfitness" target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>TikTok</a>
+          <a href="https://youtube.com/@ronanocfitness" target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>YouTube</a>
           <a href="https://wa.me/353833604182?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F" target="_blank" rel="noopener noreferrer"
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>WhatsApp</a>
           <a href="privacy-policy.html"

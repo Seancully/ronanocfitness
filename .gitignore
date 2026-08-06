@@ -1,3 +1,8 @@
 .claude/
 .DS_Store
 node_modules/
+
+# Raw source material (originals kept locally only).
+# Contains VSL.mov at ~390MB — over GitHub's 100MB per-file hard limit — plus
+# un-redacted client screenshots. The web-ready exports live in assets/.
+ExtraAssetts/

@@ -47,9 +47,10 @@ function Nav({ theme, onToggle }) {
   );
 }
 
-// Drop-in video player. Set COACH_VIDEO to a YouTube/Vimeo embed URL
-// or a direct .mp4 URL when Ronan's video is ready.
-const COACH_VIDEO = '';
+// Coach intro video. Local file so it works on any domain — swap to a
+// YouTube/Vimeo embed URL here if it ever moves to a hosted player.
+const COACH_VIDEO  = 'assets/video/meet-ronan.mp4';
+const COACH_POSTER = 'assets/video/meet-ronan-poster.jpg';
 
 function CoachVideo({ theme }) {
   const cardBg = theme === 'light' ? '#F2F2F2' : '#111';
@@ -57,46 +58,93 @@ function CoachVideo({ theme }) {
   const muted  = theme === 'light' ? '#666'    : '#888';
   const isEmbed = COACH_VIDEO && !/\.(mp4|webm|mov)$/i.test(COACH_VIDEO);
 
+  // Hold the poster until the user asks to play — the file is ~34MB, so
+  // nothing is downloaded on page load.
+  const [playing, setPlaying] = React.useState(false);
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (playing && videoRef.current) videoRef.current.play().catch(() => {});
+  }, [playing]);
+
+  const frame = {
+    background: cardBg, border: `1px solid ${border}`,
+    borderRadius: 4, aspectRatio: '16/9', overflow: 'hidden',
+    position: 'relative',
+  };
+
+  if (!COACH_VIDEO) {
+    return (
+      <div style={{ ...frame, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: muted, letterSpacing: '0.05em' }}>
+          Video coming soon
+        </div>
+      </div>
+    );
+  }
+
+  if (isEmbed) {
+    return (
+      <div style={frame}>
+        <iframe
+          src={COACH_VIDEO}
+          title="Meet Ronan"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{ width: '100%', height: '100%', border: 0 }}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div style={{
-      background: cardBg, border: `1px solid ${border}`,
-      borderRadius: 4, aspectRatio: '16/9', overflow: 'hidden',
-      display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center', gap: 14,
-    }}>
-      {COACH_VIDEO ? (
-        isEmbed ? (
-          <iframe
-            src={COACH_VIDEO}
-            title="Meet Ronan"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            style={{ width: '100%', height: '100%', border: 0 }}
-          />
-        ) : (
-          <video controls playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', background: '#000' }}>
-            <source src={COACH_VIDEO} />
-          </video>
-        )
+    <div style={frame}>
+      {playing ? (
+        <video
+          ref={videoRef}
+          controls playsInline
+          poster={COACH_POSTER}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', background: '#000', display: 'block' }}
+        >
+          <source src={COACH_VIDEO} type="video/mp4" />
+          Your browser doesn't support embedded video.
+        </video>
       ) : (
-        <>
-          <div style={{
-            width: 64, height: 64, borderRadius: '50%',
-            border: `2px solid ${border}`,
+        <button
+          onClick={() => setPlaying(true)}
+          aria-label="Play Ronan's intro video"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            border: 'none', padding: 0, cursor: 'pointer',
+            background: `#000 center/cover no-repeat url(${COACH_POSTER})`,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <span style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.28)' }} />
+          <span style={{
+            position: 'relative', width: 68, height: 68, borderRadius: '50%',
+            background: '#D42B2B', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 6px 24px rgba(0,0,0,0.45)',
           }}>
-            <div style={{
+            <span style={{
               width: 0, height: 0,
-              borderTop: '12px solid transparent',
-              borderBottom: '12px solid transparent',
-              borderLeft: `20px solid #D42B2B`,
-              marginLeft: 5,
+              borderTop: '13px solid transparent',
+              borderBottom: '13px solid transparent',
+              borderLeft: '21px solid #fff',
+              marginLeft: 6,
             }} />
-          </div>
-          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: muted, letterSpacing: '0.05em' }}>
-            Video coming soon
-          </div>
-        </>
+          </span>
+          {/* Top-left, so it never clashes with the video's burned-in subtitles */}
+          <span style={{
+            position: 'absolute', top: 10, left: 10,
+            background: 'rgba(0,0,0,0.6)', padding: '4px 9px', borderRadius: 2,
+            fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
+            letterSpacing: '0.12em', textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.92)',
+          }}>
+            Watch · 1:38
+          </span>
+        </button>
       )}
     </div>
   );

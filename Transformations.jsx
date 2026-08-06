@@ -1,7 +1,23 @@
 // Transformations.jsx — Before/After section
 
-// Real client transformations will be added here once collected.
-const TRANSFORMS = [];
+// Real transformations. `weight` / `duration` are optional — only add them
+// when the actual figures are known, never estimate them.
+const TRANSFORMS = [
+  {
+    name: 'Ronan O’Callaghan',
+    type: 'Your Coach — My Own Transformation',
+    before: 'assets/transformations/ronan-before.jpg',
+    after:  'assets/transformations/ronan-after.jpg',
+    note: 'I coach the exact process I used on myself.',
+  },
+  {
+    name: 'Online Client',
+    type: 'Fat Loss & Muscle Gain',
+    before: 'assets/transformations/client1-before.jpg',
+    after:  'assets/transformations/client1-after.jpg',
+    note: 'Leaner, stronger, and visibly more muscle.',
+  },
+];
 
 function TransformCard({ t, theme }) {
   const cardBg   = theme === 'light' ? '#F2F2F2' : '#1A1A1A';
@@ -9,45 +25,57 @@ function TransformCard({ t, theme }) {
   const fg       = theme === 'light' ? '#0D0D0D' : '#FFFFFF';
   const muted    = theme === 'light' ? '#666'    : '#888';
   const photoBg  = theme === 'light' ? '#D8D8D8' : '#2A2A2A';
-  const photoTxt = theme === 'light' ? '#999'    : '#555';
+
+  const pair = [
+    { label: 'Before', src: t.before },
+    { label: 'After',  src: t.after  },
+  ];
 
   return (
     <div style={{
       background: cardBg, border: `1px solid ${border}`,
       borderRadius: 4, overflow: 'hidden', flexShrink: 0,
-      width: 'min(88vw, 320px)',
+      width: 'min(88vw, 340px)',
     }}>
       {/* Photo pair */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, background: border }}>
-        {['Before', 'After'].map(label => (
-          <div key={label} style={{
-            background: photoBg, aspectRatio: '3/4',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'flex-end',
-            padding: 8,
-          }}>
+        {pair.map(({ label, src }) => (
+          <div key={label} style={{ position: 'relative', background: photoBg, aspectRatio: '1/1' }}>
+            <img
+              src={src}
+              alt={`${t.name} — ${label.toLowerCase()}`}
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
             <div style={{
-              background: 'rgba(0,0,0,0.5)', color: '#fff',
-              fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '4px 10px', borderRadius: 2,
+              position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)',
+              background: label === 'After' ? '#D42B2B' : 'rgba(0,0,0,0.62)', color: '#fff',
+              fontFamily: "'DM Sans', sans-serif", fontSize: 10,
+              fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+              padding: '4px 10px', borderRadius: 2, whiteSpace: 'nowrap',
             }}>{label}</div>
-            <div style={{ position: 'absolute', opacity: 0.3, fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: photoTxt }}>Photo</div>
           </div>
         ))}
       </div>
       {/* Info */}
       <div style={{ padding: '16px 16px 18px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+          <div style={{ minWidth: 0 }}>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 700, color: fg }}>{t.name}</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#D42B2B', marginTop: 2 }}>{t.type}</div>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, color: fg, lineHeight: 1 }}>{t.weight}</div>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: muted, marginTop: 2 }}>{t.duration}</div>
-          </div>
+          {t.weight && (
+            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, color: fg, lineHeight: 1 }}>{t.weight}</div>
+              {t.duration && <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: muted, marginTop: 2 }}>{t.duration}</div>}
+            </div>
+          )}
         </div>
+        {t.note && (
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, lineHeight: 1.55, color: muted, margin: '10px 0 0' }}>
+            {t.note}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -88,6 +116,7 @@ function Transformations({ theme }) {
       ) : (
         <div style={{
           display: 'flex', gap: 14, overflowX: 'auto',
+          justifyContent: 'safe center',
           padding: '4px 24px 16px', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch',
         }}>
