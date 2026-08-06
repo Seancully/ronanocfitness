@@ -89,7 +89,7 @@ function Transformations({ theme }) {
   const muted  = theme === 'light' ? '#666'    : '#888';
 
   return (
-    <section style={{ background: bg, padding: '80px 0' }}>
+    <section id="transformations" style={{ background: bg, padding: '80px 0' }}>
       <div style={{ padding: '0 24px', marginBottom: 32, textAlign: 'center' }}>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D42B2B', marginBottom: 10 }}>
           Client Transformations

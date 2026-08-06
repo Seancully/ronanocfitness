@@ -150,6 +150,58 @@ function CoachVideo({ theme }) {
   );
 }
 
+// Compact proof strip: the strongest asset on the page is Ronan's own
+// before/after, which otherwise sits far below the fold. Links down to the
+// full Before & After section rather than duplicating it.
+function HeroProof({ theme }) {
+  const cardBg = theme === 'light' ? '#FFFFFF' : '#141414';
+  const border = theme === 'light' ? '#E0E0E0' : '#2A2A2A';
+  const fg     = theme === 'light' ? '#0D0D0D' : '#FFFFFF';
+  const muted  = theme === 'light' ? '#666'    : '#888';
+
+  const shot = (src, label) => (
+    <div style={{ position: 'relative', width: 54, height: 54, borderRadius: 3, overflow: 'hidden', flexShrink: 0 }}>
+      <img src={src} alt={`Ronan ${label.toLowerCase()}`} loading="lazy"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      <span style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        background: label === 'After' ? '#D42B2B' : 'rgba(0,0,0,0.65)',
+        color: '#fff', fontFamily: "'DM Sans', sans-serif", fontSize: 8,
+        fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+        textAlign: 'center', padding: '2px 0',
+      }}>{label}</span>
+    </div>
+  );
+
+  return (
+    <a href="#transformations" className="hero-proof" style={{
+      display: 'flex', alignItems: 'center', gap: 12,
+      marginTop: 18, padding: '10px 14px 10px 10px',
+      background: cardBg, border: `1px solid ${border}`, borderRadius: 5,
+      textDecoration: 'none', textAlign: 'left',
+    }}>
+      <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
+        {shot('assets/transformations/ronan-before.jpg', 'Before')}
+        {shot('assets/transformations/ronan-after.jpg', 'After')}
+      </div>
+      <div style={{ minWidth: 0, flex: 1 }}>
+        <div style={{
+          fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
+          letterSpacing: '0.14em', textTransform: 'uppercase', color: '#D42B2B',
+        }}>
+          My Own Transformation
+        </div>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: fg, fontWeight: 600, marginTop: 3, lineHeight: 1.35 }}>
+          I coach the exact process I used on myself.
+        </div>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11.5, color: muted, marginTop: 2 }}>
+          See all results ↓
+        </div>
+      </div>
+    </a>
+  );
+}
+
 function Hero({ theme }) {
   const bg = theme === 'light' ? '#F2F2F2' : '#0D0D0D';
   const fg = theme === 'light' ? '#0D0D0D' : '#FFFFFF';
@@ -195,6 +247,7 @@ function Hero({ theme }) {
           Meet Your Coach — What I Offer, Why You Should Trust Me
         </div>
         <CoachVideo theme={theme} />
+        <HeroProof theme={theme} />
 
         <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" style={{
           display: 'inline-block', marginTop: 28,
@@ -213,4 +266,4 @@ function Hero({ theme }) {
   );
 }
 
-Object.assign(window, { Logo, Nav, Hero, CoachVideo });
+Object.assign(window, { Logo, Nav, Hero, CoachVideo, HeroProof });

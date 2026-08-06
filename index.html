@@ -4,21 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RONANOCfitness | Online Transformation Coaching</title>
-  <meta name="description" content="Online fitness coaching built around you. Personalised nutrition, training plans and real accountability. €20/week. 2-week money back guarantee.">
+  <meta name="description" content="Online fitness coaching built around you. Personalised nutrition, training plans and real accountability. Plans from €10/week. 2-week money back guarantee.">
   <meta name="keywords" content="online fitness coaching, personal trainer Ireland, nutrition coaching, transformation coaching, online PT">
   <meta name="author" content="RONANOCfitness">
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="RONANOCfitness | Online Transformation Coaching">
-  <meta property="og:description" content="Personalised nutrition & training coaching built around your life. Real results, no fad diets. €20/week.">
-  <meta property="og:image" content="https://ronanoc.fitness/og-image.jpg">
+  <meta property="og:description" content="Personalised nutrition & training coaching built around your life. Real results, no fad diets. Plans from €10/week.">
+  <!-- Relative so it survives the domain move; crawlers resolve it against og:url. -->
+  <meta property="og:image" content="assets/video/meet-ronan-poster.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
   <meta property="og:url" content="https://ronanoc.fitness">
 
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RONANOCfitness | Online Transformation Coaching">
-  <meta name="twitter:description" content="Personalised nutrition & training coaching. €20/week. 2-week money back guarantee.">
+  <meta name="twitter:description" content="Personalised nutrition & training coaching. Plans from €10/week. 2-week money back guarantee.">
+  <meta name="twitter:image" content="assets/video/meet-ronan-poster.jpg">
 
   <!-- Favicon: inline SVG as data URI -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D0D0D'/><text x='2' y='24' font-family='Arial Narrow,sans-serif' font-size='18' font-weight='900' fill='%23D42B2B' letter-spacing='-1'>ROC</text></svg>">
@@ -27,7 +31,7 @@
   
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness","https://tiktok.com/@ronanocfitness","https://youtube.com/@ronanocfitness"],"priceRange":"€20/week","serviceType":"Online Fitness Coaching"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness","https://tiktok.com/@ronanocfitness","https://youtube.com/@ronanocfitness"],"priceRange":"€10-€20/week","serviceType":"Online Fitness Coaching"}</script>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -47,6 +51,18 @@
 
     /* Light mode */
     body[data-theme="light"] { background: #FFFFFF; }
+
+    /* Hero proof strip */
+    .hero-proof { transition: transform 0.2s ease, border-color 0.2s ease; }
+    .hero-proof:hover, .hero-proof:focus-visible {
+      transform: translateY(-2px);
+      border-color: #D42B2B;
+    }
+    .hero-proof:focus-visible { outline: 2px solid #D42B2B; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-proof { transition: none; }
+      .hero-proof:hover, .hero-proof:focus-visible { transform: none; }
+    }
 
     /* Socials grid */
     .socials-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
