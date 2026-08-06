@@ -58,8 +58,9 @@ function CoachVideo({ theme }) {
   const muted  = theme === 'light' ? '#666'    : '#888';
   const isEmbed = COACH_VIDEO && !/\.(mp4|webm|mov)$/i.test(COACH_VIDEO);
 
-  // Hold the poster until the user asks to play — the file is ~34MB, so
-  // nothing is downloaded on page load.
+  // Hold the poster until the user asks to play — nothing is downloaded on
+  // page load. Kept at 720p/~7MB: a 34MB build blew the 10-minute GitHub
+  // Pages deploy timeout, so don't raise this without re-testing the deploy.
   const [playing, setPlaying] = React.useState(false);
   const videoRef = React.useRef(null);
 
