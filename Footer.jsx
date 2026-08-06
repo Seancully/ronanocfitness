@@ -17,22 +17,22 @@ function CTASection({ theme }) {
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="https://wa.me/353833604182?text=Hi%20Ronan%2C%20I%27m%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F"
-            target="_blank" rel="noopener noreferrer" style={{
+            target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
               display: 'inline-block',
               background: '#D42B2B', color: '#FFFFFF',
               fontFamily: "'DM Sans', sans-serif", fontSize: 15,
               fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '16px 32px', textDecoration: 'none', borderRadius: 0,
+              padding: '16px 32px', textDecoration: 'none', borderRadius: 999,
             }}>
             Message on WhatsApp
           </a>
-          <a href="#pricing" style={{
+          <a href="#pricing" className="btn-pill" style={{
             display: 'inline-block',
             background: 'transparent', color: '#FFFFFF',
             border: '1px solid #FFFFFF',
             fontFamily: "'DM Sans', sans-serif", fontSize: 15,
             fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-            padding: '15px 32px', textDecoration: 'none', borderRadius: 0,
+            padding: '15px 32px', textDecoration: 'none', borderRadius: 999,
           }}>
             See Plans
           </a>

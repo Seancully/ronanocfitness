@@ -67,14 +67,14 @@ function PlanCard({ plan, theme, compact }) {
     <div style={{
       background: cardBg,
       border: plan.featured ? `2px solid ${accent}` : `1px solid ${border}`,
-      borderRadius: 4, overflow: 'hidden', display: 'flex', flexDirection: 'column',
+      borderRadius: 18, overflow: 'hidden', display: 'flex', flexDirection: 'column',
     }}>
       <div style={{ height: 4, background: plan.featured ? accent : border }} />
 
       <div style={{ padding: compact ? '24px 22px' : '32px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
           <div style={{
-            width: 28, height: 28, borderRadius: 2, flexShrink: 0,
+            width: 28, height: 28, borderRadius: 8, flexShrink: 0,
             background: accent, color: '#fff',
             fontFamily: "'Bebas Neue', sans-serif", fontSize: 18,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -87,7 +87,7 @@ function PlanCard({ plan, theme, compact }) {
               marginLeft: 'auto',
               fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
               letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: '#fff', background: accent, padding: '4px 8px', borderRadius: 2,
+              color: '#fff', background: accent, padding: '4px 8px', borderRadius: 999,
             }}>Most Popular</div>
           )}
         </div>
@@ -124,14 +124,14 @@ function PlanCard({ plan, theme, compact }) {
           ))}
         </div>
 
-        <a href={waLink(plan.waMsg)} target="_blank" rel="noopener noreferrer" style={{
+        <a href={waLink(plan.waMsg)} target="_blank" rel="noopener noreferrer" className="btn-pill" style={{
           display: 'block', textAlign: 'center', marginTop: 22,
           background: plan.featured ? accent : 'transparent',
           color: plan.featured ? '#FFFFFF' : fg,
           border: plan.featured ? 'none' : `1px solid ${fg}`,
           fontFamily: "'DM Sans', sans-serif", fontSize: 14,
           fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-          padding: '14px 0', textDecoration: 'none', borderRadius: 0,
+          padding: '14px 0', textDecoration: 'none', borderRadius: 999,
         }}>
           {plan.cta}
         </a>
@@ -192,7 +192,7 @@ function Pricing({ theme }) {
         <div style={{
           maxWidth: 480, margin: '24px auto 0',
           background: cardBg, border: `1px solid ${border}`,
-          borderRadius: 4, padding: '20px 24px',
+          borderRadius: 16, padding: '20px 24px',
           display: 'flex', gap: 16, alignItems: 'flex-start',
         }}>
           <div style={{

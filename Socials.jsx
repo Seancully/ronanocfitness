@@ -60,7 +60,7 @@ function SocialCard({ s, theme }) {
         '--glow': s.glow,
         background: cardBg,
         border: `1px solid ${border}`,
-        borderRadius: 6,
+        borderRadius: 16,
         padding: '30px 20px 26px',
         textDecoration: 'none',
         display: 'flex',

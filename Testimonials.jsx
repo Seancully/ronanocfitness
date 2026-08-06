@@ -39,7 +39,7 @@ function TestimonialCard({ t, theme }) {
   return (
     <div style={{
       background: cardBg, border: `1px solid ${cardBorder}`,
-      borderRadius: 4, padding: '22px 20px',
+      borderRadius: 16, padding: '22px 20px',
       minWidth: 280, maxWidth: 300, flexShrink: 0,
       display: 'flex', flexDirection: 'column', gap: 0,
     }}>
@@ -85,7 +85,7 @@ function Testimonials({ theme }) {
           <div style={{
             maxWidth: 480, margin: '0 auto',
             background: cardBg, border: `1px dashed ${border}`,
-            borderRadius: 4, padding: '28px 24px', textAlign: 'center',
+            borderRadius: 16, padding: '28px 24px', textAlign: 'center',
           }}>
             <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 26, letterSpacing: '0.03em', color: fg, marginBottom: 8 }}>
               Client Stories Coming Soon

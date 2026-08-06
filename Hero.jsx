@@ -38,7 +38,7 @@ function Nav({ theme, onToggle }) {
           color: fg, fontFamily: "'DM Sans', sans-serif",
           fontSize: 12, fontWeight: 600, letterSpacing: '0.08em',
           textTransform: 'uppercase', padding: '6px 10px', cursor: 'pointer',
-          borderRadius: 2,
+          borderRadius: 999,
         }}>
           {theme === 'light' ? '◑ Dark' : '◑ Light'}
         </button>
@@ -69,7 +69,7 @@ function CoachVideo({ theme }) {
 
   const frame = {
     background: cardBg, border: `1px solid ${border}`,
-    borderRadius: 4, aspectRatio: '16/9', overflow: 'hidden',
+    borderRadius: 16, aspectRatio: '16/9', overflow: 'hidden',
     position: 'relative',
   };
 
@@ -137,7 +137,7 @@ function CoachVideo({ theme }) {
           {/* Top-left, so it never clashes with the video's burned-in subtitles */}
           <span style={{
             position: 'absolute', top: 10, left: 10,
-            background: 'rgba(0,0,0,0.6)', padding: '4px 9px', borderRadius: 2,
+            background: 'rgba(0,0,0,0.6)', padding: '4px 9px', borderRadius: 999,
             fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
             letterSpacing: '0.12em', textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.92)',
@@ -160,7 +160,7 @@ function HeroProof({ theme }) {
   const muted  = theme === 'light' ? '#666'    : '#888';
 
   const shot = (src, label) => (
-    <div style={{ position: 'relative', width: 54, height: 54, borderRadius: 3, overflow: 'hidden', flexShrink: 0 }}>
+    <div style={{ position: 'relative', width: 54, height: 54, borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
       <img src={src} alt={`Ronan ${label.toLowerCase()}`} loading="lazy"
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       <span style={{
@@ -177,7 +177,7 @@ function HeroProof({ theme }) {
     <a href="#transformations" className="hero-proof" style={{
       display: 'flex', alignItems: 'center', gap: 12,
       marginTop: 18, padding: '10px 14px 10px 10px',
-      background: cardBg, border: `1px solid ${border}`, borderRadius: 5,
+      background: cardBg, border: `1px solid ${border}`, borderRadius: 16,
       textDecoration: 'none', textAlign: 'left',
     }}>
       <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
@@ -249,12 +249,12 @@ function Hero({ theme }) {
         <CoachVideo theme={theme} />
         <HeroProof theme={theme} />
 
-        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" style={{
+        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
           display: 'inline-block', marginTop: 28,
           background: '#D42B2B', color: '#FFFFFF',
           fontFamily: "'DM Sans', sans-serif", fontSize: 15,
           fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-          padding: '16px 36px', textDecoration: 'none', borderRadius: 0,
+          padding: '16px 36px', textDecoration: 'none', borderRadius: 999,
         }}>
           Start Your Transformation
         </a>

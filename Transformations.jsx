@@ -34,7 +34,7 @@ function TransformCard({ t, theme }) {
   return (
     <div style={{
       background: cardBg, border: `1px solid ${border}`,
-      borderRadius: 4, overflow: 'hidden', flexShrink: 0,
+      borderRadius: 16, overflow: 'hidden', flexShrink: 0,
       width: 'min(88vw, 340px)',
     }}>
       {/* Photo pair */}
@@ -52,7 +52,7 @@ function TransformCard({ t, theme }) {
               background: label === 'After' ? '#D42B2B' : 'rgba(0,0,0,0.62)', color: '#fff',
               fontFamily: "'DM Sans', sans-serif", fontSize: 10,
               fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              padding: '4px 10px', borderRadius: 2, whiteSpace: 'nowrap',
+              padding: '4px 10px', borderRadius: 999, whiteSpace: 'nowrap',
             }}>{label}</div>
           </div>
         ))}
@@ -103,7 +103,7 @@ function Transformations({ theme }) {
           <div style={{
             maxWidth: 480, margin: '0 auto',
             background: cardBg, border: `1px dashed ${border}`,
-            borderRadius: 4, padding: '28px 24px', textAlign: 'center',
+            borderRadius: 16, padding: '28px 24px', textAlign: 'center',
           }}>
             <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 26, letterSpacing: '0.03em', color: fg, marginBottom: 8 }}>
               Transformations Coming Soon
