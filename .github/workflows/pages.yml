@@ -33,6 +33,16 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # GitHub Pages serves everything with Cache-Control: max-age=600, so a
+      # returning browser reuses cached .jsx for 10 minutes without even
+      # revalidating — you get new HTML running old components. Stamping the
+      # commit SHA into each script URL makes every deploy a fresh URL.
+      - name: Stamp asset version
+        run: |
+          sed -i "s/DEPLOY_VERSION/${GITHUB_SHA::8}/g" index.html
+          echo "Stamped version ${GITHUB_SHA::8}"
+          grep -o 'src="[A-Za-z]*\.jsx?v=[a-f0-9]*"' index.html | head -3
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
