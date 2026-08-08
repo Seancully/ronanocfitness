@@ -52,6 +52,44 @@
     /* Light mode */
     body[data-theme="light"] { background: #FFFFFF; }
 
+    /* ---- Wide-screen layout ----
+       Width goes to layout and media, never to line length: prose stays
+       capped near 60ch so the measure remains readable on a 27" monitor. */
+
+    /* Hero: centred stack on phones, copy | media from 900px */
+    .hero-grid { width: 100%; max-width: 520px; text-align: center; }
+    .hero-lede { margin-left: auto; margin-right: auto; max-width: 56ch; }
+    /* Stacked order is copy -> CTA -> video, so the media needs its own
+       breathing room; the columns sit side by side from 900px and it resets. */
+    .hero-media { margin-top: 40px; }
+    @media (min-width: 900px) {
+      .hero-grid {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: clamp(40px, 5vw, 72px);
+        align-items: center;
+        text-align: left;
+      }
+      .hero-copy { text-align: left; }
+      .hero-lede { margin-left: 0; max-width: 46ch; }
+      .hero-media { margin-top: 0; }
+    }
+    @media (min-width: 1400px) {
+      .hero-grid { max-width: 1320px; }
+    }
+
+    /* Pricing: three across from 900px, featured plan centred */
+    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .pricing-grid > div { display: flex; }
+    .pricing-grid > div > div { flex: 1; }
+    @media (min-width: 900px) {
+      .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+      .plan-b { order: 1; }
+      .plan-a { order: 2; }
+      .plan-c { order: 3; }
+    }
+
     /* Pill buttons — shared press/hover feel across every CTA */
     .btn-pill {
       transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;

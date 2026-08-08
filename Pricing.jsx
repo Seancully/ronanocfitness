@@ -160,7 +160,7 @@ function Pricing({ theme }) {
 
   return (
     <section id="pricing" style={{ background: bg, padding: '80px 24px' }}>
-      <div style={{ maxWidth: 960, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 36, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D42B2B', marginBottom: 10 }}>
             Coaching Packages
@@ -173,19 +173,13 @@ function Pricing({ theme }) {
           </p>
         </div>
 
-        {/* Plan A — featured, full width on top */}
-        <div style={{ maxWidth: 480, margin: '0 auto 20px' }}>
-          <PlanCard plan={PLANS.A} theme={theme} />
-        </div>
-
-        {/* Plans B + C side by side on wider screens, stacked on mobile */}
-        <div style={{
-          display: 'grid', gap: 16,
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          maxWidth: 720, margin: '0 auto',
-        }}>
-          <PlanCard plan={PLANS.B} theme={theme} compact />
-          <PlanCard plan={PLANS.C} theme={theme} compact />
+        {/* Three across from 900px. Plan A stays first in the DOM so phones
+            lead with the featured plan, but CSS order centres it on desktop
+            where the middle column reads as the recommended one. */}
+        <div className="pricing-grid">
+          <div className="plan-a"><PlanCard plan={PLANS.A} theme={theme} /></div>
+          <div className="plan-b"><PlanCard plan={PLANS.B} theme={theme} compact /></div>
+          <div className="plan-c"><PlanCard plan={PLANS.C} theme={theme} compact /></div>
         </div>
 
         {/* Money back guarantee */}

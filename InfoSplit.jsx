@@ -7,7 +7,7 @@ function InfoSplit({ theme }) {
 
   return (
     <section style={{ background: bg, padding: '80px 24px' }}>
-      <div className="info-split" style={{ maxWidth: 1040, margin: '0 auto' }}>
+      <div className="info-split" style={{ maxWidth: 1200, margin: '0 auto' }}>
         <IncludesContent theme={theme} />
         <FAQContent theme={theme} />
       </div>

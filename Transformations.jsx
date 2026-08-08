@@ -35,7 +35,7 @@ function TransformCard({ t, theme }) {
     <div style={{
       background: cardBg, border: `1px solid ${border}`,
       borderRadius: 16, overflow: 'hidden', flexShrink: 0,
-      width: 'min(88vw, 340px)',
+      width: 'min(88vw, 480px)',
     }}>
       {/* Photo pair */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, background: border }}>

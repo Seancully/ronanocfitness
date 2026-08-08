@@ -138,7 +138,7 @@ function Socials({ theme }) {
 
   return (
     <section style={{ background: bg, padding: '80px 24px' }}>
-      <div style={{ maxWidth: 860, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1120, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 36 }}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,

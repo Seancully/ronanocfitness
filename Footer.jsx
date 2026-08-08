@@ -5,7 +5,7 @@ function CTASection({ theme }) {
 
   return (
     <section style={{ background: bg, padding: '80px 24px', textAlign: 'center' }}>
-      <div style={{ maxWidth: 420, margin: '0 auto' }}>
+      <div style={{ maxWidth: 640, margin: '0 auto' }}>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D42B2B', marginBottom: 12 }}>
           Limited Spots Available
         </div>
@@ -50,7 +50,7 @@ function Footer({ theme }) {
 
   return (
     <footer style={{ background: bg, borderTop: `1px solid ${border}`, padding: '32px 24px' }}>
-      <div style={{ maxWidth: 480, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, lineHeight: 1 }}>
           <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, letterSpacing: 2, color: '#D42B2B' }}>RONANOC</span>
           <span style={{ width: 1, height: 18, background: '#555', flexShrink: 0, display: 'inline-block' }}></span>

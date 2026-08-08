@@ -216,52 +216,58 @@ function Hero({ theme }) {
       justifyContent: 'center', padding: '80px 24px 60px',
       boxSizing: 'border-box',
     }}>
-      <div style={{ maxWidth: 480, width: '100%', textAlign: 'center' }}>
-        <div style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
-          letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: '#D42B2B', marginBottom: 16,
-        }}>
-          Online Transformation Coaching
-        </div>
-        <h1 style={{
-          fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif",
-          fontSize: 'clamp(52px, 14vw, 72px)', lineHeight: 1,
-          letterSpacing: '0.02em', textTransform: 'uppercase',
-          color: fg, margin: '0 0 16px',
-        }}>
-          Transform<br />Your Body.<br />
-          <span style={{ color: '#D42B2B' }}>Transform</span> Your Life.
-        </h1>
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.65,
-          color: muted, margin: '0 0 28px',
-        }}>
-          Personalised nutrition &amp; training coaching built around your life — real results, no fad diets.
-        </p>
+      {/* Single centred column on phones; copy left / media right from 900px,
+          which is where a 480px column starts to look marooned. */}
+      <div className="hero-grid">
+        <div className="hero-copy">
+          <div style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: '#D42B2B', marginBottom: 16,
+          }}>
+            Online Transformation Coaching
+          </div>
+          <h1 style={{
+            fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif",
+            fontSize: 'clamp(52px, 7.5vw, 88px)', lineHeight: 0.98,
+            letterSpacing: '0.02em', textTransform: 'uppercase',
+            color: fg, margin: '0 0 18px',
+          }}>
+            Transform<br />Your Body.<br />
+            <span style={{ color: '#D42B2B' }}>Transform</span> Your Life.
+          </h1>
+          <p className="hero-lede" style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.65,
+            color: muted, margin: '0 0 28px',
+          }}>
+            Personalised nutrition &amp; training coaching built around your life — real results, no fad diets.
+          </p>
 
-        <div style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
-          letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: '#D42B2B', marginBottom: 10,
-        }}>
-          Meet Your Coach — What I Offer, Why You Should Trust Me
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
+            display: 'inline-block',
+            background: '#D42B2B', color: '#FFFFFF',
+            fontFamily: "'DM Sans', sans-serif", fontSize: 15,
+            fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+            padding: '16px 36px', textDecoration: 'none', borderRadius: 999,
+          }}>
+            Start Your Transformation
+          </a>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: muted, marginTop: 12, marginBottom: 0 }}>
+            Message on WhatsApp · Reply within 24h
+          </p>
         </div>
-        <CoachVideo theme={theme} />
-        <HeroProof theme={theme} />
 
-        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
-          display: 'inline-block', marginTop: 28,
-          background: '#D42B2B', color: '#FFFFFF',
-          fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-          fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-          padding: '16px 36px', textDecoration: 'none', borderRadius: 999,
-        }}>
-          Start Your Transformation
-        </a>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: muted, marginTop: 12 }}>
-          Message on WhatsApp · Reply within 24h
-        </p>
+        <div className="hero-media">
+          <div style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: '#D42B2B', marginBottom: 10,
+          }}>
+            Meet Your Coach — What I Offer, Why You Should Trust Me
+          </div>
+          <CoachVideo theme={theme} />
+          <HeroProof theme={theme} />
+        </div>
       </div>
     </section>
   );
