@@ -115,8 +115,8 @@ function Testimonials({ theme }) {
 
 function StatBar({ theme }) {
   const bg = theme === 'light' ? '#0D0D0D' : '#1A1A1A';
+  // No star rating here: there are no collected ratings to back one up.
   const stats = [
-    { num: '5★', label: 'Rated Coaching' },
     { num: '24/7', label: 'Support Access' },
     { num: '2 Wk', label: 'Risk Free' },
   ];
