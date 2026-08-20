@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RONANOCfitness | Online Transformation Coaching</title>
-  <meta name="description" content="Online fitness coaching built around you. Personalised nutrition, training plans and real accountability. Plans from €10/week. 2-week money back guarantee.">
+  <meta name="description" content="Online fitness coaching built around you. Personalised nutrition, training plans and real accountability. €20/week. 2-week money back guarantee.">
   <meta name="keywords" content="online fitness coaching, personal trainer Ireland, nutrition coaching, transformation coaching, online PT">
   <meta name="author" content="RONANOCfitness">
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="RONANOCfitness | Online Transformation Coaching">
-  <meta property="og:description" content="Personalised nutrition & training coaching built around your life. Real results, no fad diets. Plans from €10/week.">
+  <meta property="og:description" content="Personalised nutrition & training coaching built around your life. Real results, no fad diets. €20/week.">
   <!-- Relative so it survives the domain move; crawlers resolve it against og:url. -->
   <meta property="og:image" content="assets/video/meet-ronan-poster.jpg">
   <meta property="og:image:width" content="1280">
@@ -21,7 +21,7 @@
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RONANOCfitness | Online Transformation Coaching">
-  <meta name="twitter:description" content="Personalised nutrition & training coaching. Plans from €10/week. 2-week money back guarantee.">
+  <meta name="twitter:description" content="Personalised nutrition & training coaching. €20/week. 2-week money back guarantee.">
   <meta name="twitter:image" content="assets/video/meet-ronan-poster.jpg">
 
   <!-- Favicon: inline SVG as data URI -->
@@ -31,7 +31,7 @@
   
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","telephone":"+353833604182","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness","https://tiktok.com/@ronanocfitness","https://youtube.com/@ronanocfitness"],"priceRange":"€10-€20/week","serviceType":"Online Fitness Coaching"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"RONANOCfitness","description":"Online transformation coaching — personalised nutrition and training plans.","url":"https://ronanoc.fitness","email":"ronan.ocallaghan13@gmail.com","sameAs":["https://instagram.com/ronanocfitness","https://tiktok.com/@ronanocfitness","https://youtube.com/@ronanocfitness"],"priceRange":"€20/week","serviceType":"Online Fitness Coaching"}</script>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -40,10 +40,6 @@
     html { scroll-behavior: smooth; scroll-padding-top: 72px; }
     body { background: #0D0D0D; }
     ::-webkit-scrollbar { display: none; }
-
-    /* Hide phone number text on small screens, show icon only */
-    .phone-label { display: none; }
-    @media (min-width: 420px) { .phone-label { display: inline; } }
 
     /* Fade-in on scroll */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -56,38 +52,40 @@
        Width goes to layout and media, never to line length: prose stays
        capped near 60ch so the measure remains readable on a 27" monitor. */
 
-    /* Hero: centred stack on phones, copy | media from 900px */
-    .hero-grid { width: 100%; max-width: 520px; text-align: center; }
+    /* Hero. Phones: copy -> video -> CTA, tuned so the whole video sits above
+       the fold on a 375x812 screen. From 900px: copy+CTA left, media right. */
+    .hero-section { padding: 76px 20px 40px; }
+    .hero-grid {
+      width: 100%; max-width: 520px; text-align: center;
+      display: flex; flex-direction: column;
+    }
+    .hero-copy  { order: 1; }
+    .hero-media { order: 2; margin-top: 22px; }
+    .hero-cta   { order: 3; margin-top: 26px; }
     .hero-lede { margin-left: auto; margin-right: auto; max-width: 56ch; }
-    /* Stacked order is copy -> CTA -> video, so the media needs its own
-       breathing room; the columns sit side by side from 900px and it resets. */
-    .hero-media { margin-top: 40px; }
+    .hero-title { font-size: clamp(40px, 11vw, 88px); }
+    .hero-eyebrow { margin-bottom: 12px; }
+
     @media (min-width: 900px) {
+      .hero-section { padding: 96px 24px 72px; }
       .hero-grid {
         max-width: 1200px;
         display: grid;
         grid-template-columns: 1.05fr 1fr;
-        gap: clamp(40px, 5vw, 72px);
-        align-items: center;
+        grid-template-areas: "copy media" "cta media";
+        column-gap: clamp(40px, 5vw, 72px);
+        row-gap: 28px;
+        align-content: center;
         text-align: left;
       }
-      .hero-copy { text-align: left; }
+      .hero-copy  { grid-area: copy;  align-self: end;    text-align: left; }
+      .hero-cta   { grid-area: cta;   align-self: start;  margin-top: 0; }
+      .hero-media { grid-area: media; align-self: center; margin-top: 0; }
       .hero-lede { margin-left: 0; max-width: 46ch; }
-      .hero-media { margin-top: 0; }
+      .hero-title { font-size: clamp(52px, 7.5vw, 88px); }
     }
     @media (min-width: 1400px) {
       .hero-grid { max-width: 1320px; }
-    }
-
-    /* Pricing: three across from 900px, featured plan centred */
-    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    .pricing-grid > div { display: flex; }
-    .pricing-grid > div > div { flex: 1; }
-    @media (min-width: 900px) {
-      .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
-      .plan-b { order: 1; }
-      .plan-a { order: 2; }
-      .plan-c { order: 3; }
     }
 
     /* Pill buttons — shared press/hover feel across every CTA */
@@ -142,45 +140,12 @@
       .hero-proof:hover, .hero-proof:focus-visible { transform: none; }
     }
 
-    /* Socials grid */
-    .socials-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 700px) {
-      .socials-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    /* Socials cards */
-    .social-card {
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-    .social-card:hover,
-    .social-card:focus-visible {
-      transform: translateY(-5px);
-      border-color: transparent;
-      box-shadow: 0 12px 32px var(--glow);
-    }
-    .social-card:focus-visible { outline: 2px solid #D42B2B; outline-offset: 3px; }
-    .social-wash { transition: opacity 0.22s ease; pointer-events: none; }
-    .social-card:hover .social-wash,
-    .social-card:focus-visible .social-wash { opacity: 0.10; }
-    .social-icon { transition: transform 0.22s ease; }
-    .social-card:hover .social-icon,
-    .social-card:focus-visible .social-icon { transform: scale(1.06) rotate(-3deg); }
-    .social-arrow { transition: transform 0.22s ease; }
-    .social-card:hover .social-arrow,
-    .social-card:focus-visible .social-arrow { transform: translateX(4px); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .social-card, .social-icon, .social-arrow, .social-wash { transition: none; }
-      .social-card:hover, .social-card:focus-visible { transform: none; }
-      .social-card:hover .social-icon { transform: none; }
-    }
   </style>
 </head>
 <body id="hero">
   <div id="root"></div>
 
   <script type="text/babel" src="Hero.jsx?v=DEPLOY_VERSION"></script>
-  <script type="text/babel" src="Socials.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Testimonials.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Transformations.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Pricing.jsx?v=DEPLOY_VERSION"></script>
@@ -299,34 +264,7 @@
             <CTASection theme={theme} />
           </div>
 
-          <div className="fade-in">
-            <Socials theme={theme} />
-          </div>
-
           <Footer theme={theme} />
-
-          {/* Sticky CTA bar */}
-          <div style={{
-            position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 97,
-            background: '#D42B2B',
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '12px 20px',
-            boxShadow: '0 -4px 20px rgba(0,0,0,0.4)',
-          }}>
-            <div>
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 18, color: '#fff', lineHeight: 1, letterSpacing: '0.05em' }}>Plans from €10 / week</div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 2 }}>2-week money back guarantee</div>
-            </div>
-            <a href={`https://wa.me/353833604182?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F`}
-              target="_blank" rel="noopener noreferrer"
-              className="btn-pill"
-              style={{
-              background: '#fff', color: '#D42B2B',
-              fontFamily: "'DM Sans', sans-serif", fontSize: 13,
-              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '11px 22px', textDecoration: 'none', borderRadius: 999, flexShrink: 0,
-            }}>Get Started</a>
-          </div>
 
           {/* WhatsApp floating button */}
           <a
@@ -334,7 +272,7 @@
             target="_blank" rel="noopener noreferrer"
             title="Message on WhatsApp"
             style={{
-              position: 'fixed', bottom: 88, right: 20, zIndex: 998,
+              position: 'fixed', bottom: 24, right: 20, zIndex: 998,
               width: 52, height: 52, borderRadius: '50%',
               background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: '0 4px 16px rgba(0,0,0,0.35)', textDecoration: 'none',

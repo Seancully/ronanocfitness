@@ -1,12 +1,11 @@
-// Pricing.jsx — 3-tier plans (A Full / B Nutrition / C Training) + money-back guarantee
+// Pricing.jsx — single coaching plan + money-back guarantee
 
 const WHATSAPP_BASE = 'https://wa.me/353833604182?text=';
 const waLink = (msg) => WHATSAPP_BASE + encodeURIComponent(msg);
 
 const PLANS = {
   A: {
-    letter: 'A',
-    name: 'Full Transformation',
+    name: '1 on 1 Coaching',
     tag: 'Nutrition + Training + Coaching',
     eur: 20,
     gbp: '17.25',
@@ -19,40 +18,8 @@ const PLANS = {
       'Form & technique analysis',
       'Accountability & education',
     ],
-    cta: 'Start Plan A',
-    waMsg: "Hi Ronan, I'd like to sign up for Plan A (Full Transformation — €20/week). Can you send me next steps?",
-  },
-  B: {
-    letter: 'B',
-    name: 'Nutrition Plan',
-    tag: 'Nutrition coaching only',
-    eur: 10,
-    gbp: '8.63',
-    featured: false,
-    includes: [
-      'Personalised nutrition plan',
-      'Nutritional guidance & education',
-      'Weekly check-ins',
-      'WhatsApp support',
-    ],
-    cta: 'Start Plan B',
-    waMsg: "Hi Ronan, I'd like to sign up for Plan B (Nutrition — €10/week). Can you send me next steps?",
-  },
-  C: {
-    letter: 'C',
-    name: 'Training Plan',
-    tag: 'Training coaching only',
-    eur: 10,
-    gbp: '8.63',
-    featured: false,
-    includes: [
-      'Personalised training plan',
-      'Form & technique analysis',
-      'Weekly check-ins',
-      'WhatsApp support',
-    ],
-    cta: 'Start Plan C',
-    waMsg: "Hi Ronan, I'd like to sign up for Plan C (Training — €10/week). Can you send me next steps?",
+    cta: 'Start Coaching',
+    waMsg: "Hi Ronan, I'd like to sign up for 1 on 1 Coaching (€20/week). Can you send me next steps?",
   },
 };
 
@@ -72,27 +39,8 @@ function PlanCard({ plan, theme, compact }) {
       <div style={{ height: 4, background: plan.featured ? accent : border }} />
 
       <div style={{ padding: compact ? '24px 22px' : '32px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 8, flexShrink: 0,
-            background: accent, color: '#fff',
-            fontFamily: "'Bebas Neue', sans-serif", fontSize: 18,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>{plan.letter}</div>
-          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: accent }}>
-            Plan {plan.letter}
-          </div>
-          {plan.featured && (
-            <div style={{
-              marginLeft: 'auto',
-              fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: '#fff', background: accent, padding: '4px 8px', borderRadius: 999,
-            }}>Most Popular</div>
-          )}
-        </div>
-
-        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: compact ? 26 : 30, letterSpacing: '0.03em', color: fg, lineHeight: 1.05, marginBottom: 4 }}>
+        {/* No plan letter or "most popular" flag: there is only one plan. */}
+        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: compact ? 26 : 34, letterSpacing: '0.03em', color: fg, lineHeight: 1.05, marginBottom: 4 }}>
           {plan.name.toUpperCase()}
         </div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: muted, marginBottom: 18 }}>
@@ -135,17 +83,6 @@ function PlanCard({ plan, theme, compact }) {
         }}>
           {plan.cta}
         </a>
-
-        {!plan.featured && (
-          <a href={waLink(PLANS.A.waMsg)} target="_blank" rel="noopener noreferrer" style={{
-            display: 'block', textAlign: 'center', marginTop: 8,
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600,
-            letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: accent, textDecoration: 'none', padding: '8px 0',
-          }}>
-            ↑ Upgrade to Plan A (Full)
-          </a>
-        )}
       </div>
     </div>
   );
@@ -166,20 +103,17 @@ function Pricing({ theme }) {
             Coaching Packages
           </div>
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(36px, 10vw, 48px)', lineHeight: 1, letterSpacing: '0.02em', textTransform: 'uppercase', color: fg, margin: '0 0 14px' }}>
-            Pick Your Plan
+            Work With Me
           </h2>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: muted, margin: 0, lineHeight: 1.6 }}>
-            Start with nutrition or training only — or go all-in with the full transformation plan.
+            One plan with everything in it — nutrition, training, and direct support.
           </p>
         </div>
 
-        {/* Three across from 900px. Plan A stays first in the DOM so phones
-            lead with the featured plan, but CSS order centres it on desktop
-            where the middle column reads as the recommended one. */}
-        <div className="pricing-grid">
-          <div className="plan-a"><PlanCard plan={PLANS.A} theme={theme} /></div>
-          <div className="plan-b"><PlanCard plan={PLANS.B} theme={theme} compact /></div>
-          <div className="plan-c"><PlanCard plan={PLANS.C} theme={theme} compact /></div>
+        {/* A single plan reads best as one centred card, not a lone column
+            in a three-across grid. */}
+        <div style={{ maxWidth: 520, margin: '0 auto' }}>
+          <PlanCard plan={PLANS.A} theme={theme} />
         </div>
 
         {/* Money back guarantee */}
@@ -200,7 +134,7 @@ function Pricing({ theme }) {
               2-Week Money Back Guarantee
             </div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: muted, margin: 0, lineHeight: 1.6 }}>
-              Applies to all plans. If you're not happy after your first 2 weeks, I'll refund you in full — no questions asked.
+              If you're not happy after your first 2 weeks, I'll refund you in full — no questions asked.
             </p>
           </div>
         </div>

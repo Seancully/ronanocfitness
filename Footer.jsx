@@ -54,7 +54,7 @@ function Footer({ theme }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, lineHeight: 1 }}>
           <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, letterSpacing: 2, color: '#D42B2B' }}>RONANOC</span>
           <span style={{ width: 1, height: 18, background: '#555', flexShrink: 0, display: 'inline-block' }}></span>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, color: fg }}>fitness</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, color: fg }}>coaching</span>
         </div>
         <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', justifyContent: 'center' }}>
           <a href="https://instagram.com/ronanocfitness" target="_blank" rel="noopener noreferrer"

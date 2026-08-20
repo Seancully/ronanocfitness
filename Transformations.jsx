@@ -2,20 +2,28 @@
 
 // Real transformations. `weight` / `duration` are optional — only add them
 // when the actual figures are known, never estimate them.
+// Clients lead — the coach's own result is proof of method, not the pitch.
 const TRANSFORMS = [
-  {
-    name: 'Ronan O’Callaghan',
-    type: 'Your Coach — My Own Transformation',
-    before: 'assets/transformations/ronan-before.jpg',
-    after:  'assets/transformations/ronan-after.jpg',
-    note: 'I coach the exact process I used on myself.',
-  },
   {
     name: 'Online Client',
     type: 'Fat Loss & Muscle Gain',
     before: 'assets/transformations/client1-before.jpg',
     after:  'assets/transformations/client1-after.jpg',
     note: 'Leaner, stronger, and visibly more muscle.',
+  },
+  {
+    name: 'Online Client',
+    type: 'Fat Loss Transformation',
+    before: 'assets/transformations/client2-before.jpg',
+    after:  'assets/transformations/client2-after.jpg',
+    note: 'Noticeably leaner through the waist, with better posture and shape.',
+  },
+  {
+    name: 'Ronan O’Callaghan',
+    type: 'Your Coach — My Own Transformation',
+    before: 'assets/transformations/ronan-before.jpg',
+    after:  'assets/transformations/ronan-after.jpg',
+    note: 'I coach the exact process I used on myself.',
   },
 ];
 

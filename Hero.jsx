@@ -5,7 +5,7 @@ function Logo({ theme }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
       <span style={{ fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif", fontSize: 28, letterSpacing: 2, color: '#D42B2B' }}>RONANOC</span>
       <span style={{ width: 1, height: 22, background: '#555', flexShrink: 0, display: 'inline-block' }}></span>
-      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 500, color: theme === 'light' ? '#0D0D0D' : '#FFFFFF' }}>fitness</span>
+      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 500, color: theme === 'light' ? '#0D0D0D' : '#FFFFFF' }}>coaching</span>
     </div>
   );
 }
@@ -23,16 +23,8 @@ function Nav({ theme, onToggle }) {
       display: 'flex', alignItems: 'center', justifyContent: 'flex-start',
     }}>
       <Logo theme={theme} />
+      {/* No phone link: enquiries go through WhatsApp, not direct calls. */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginLeft: 'auto' }}>
-        <a href="tel:+353833604182" style={{
-          color: '#D42B2B', textDecoration: 'none',
-          display: 'flex', alignItems: 'center', gap: 6,
-        }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D42B2B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.38 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <span className="phone-label" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: '0.02em' }}>+353 83 360 4182</span>
-        </a>
         <button onClick={onToggle} style={{
           background: 'transparent', border: `1px solid ${border}`,
           color: fg, fontFamily: "'DM Sans', sans-serif",
@@ -151,9 +143,9 @@ function CoachVideo({ theme }) {
   );
 }
 
-// Compact proof strip: the strongest asset on the page is Ronan's own
-// before/after, which otherwise sits far below the fold. Links down to the
-// full Before & After section rather than duplicating it.
+// Compact proof strip. Shows a CLIENT result rather than Ronan's own — the
+// selling point is what he gets other people, not his own physique. Links
+// down to the full Before & After section rather than duplicating it.
 function HeroProof({ theme }) {
   const cardBg = theme === 'light' ? '#FFFFFF' : '#141414';
   const border = theme === 'light' ? '#E0E0E0' : '#2A2A2A';
@@ -162,7 +154,7 @@ function HeroProof({ theme }) {
 
   const shot = (src, label) => (
     <div style={{ position: 'relative', width: 54, height: 54, borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
-      <img src={src} alt={`Ronan ${label.toLowerCase()}`} loading="lazy"
+      <img src={src} alt={`Client ${label.toLowerCase()}`} loading="lazy"
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       <span style={{
         position: 'absolute', bottom: 0, left: 0, right: 0,
@@ -182,18 +174,18 @@ function HeroProof({ theme }) {
       textDecoration: 'none', textAlign: 'left',
     }}>
       <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
-        {shot('assets/transformations/ronan-before.jpg', 'Before')}
-        {shot('assets/transformations/ronan-after.jpg', 'After')}
+        {shot('assets/transformations/client2-before.jpg', 'Before')}
+        {shot('assets/transformations/client2-after.jpg', 'After')}
       </div>
       <div style={{ minWidth: 0, flex: 1 }}>
         <div style={{
           fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
           letterSpacing: '0.14em', textTransform: 'uppercase', color: '#D42B2B',
         }}>
-          My Own Transformation
+          Client Transformations
         </div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: fg, fontWeight: 600, marginTop: 3, lineHeight: 1.35 }}>
-          I coach the exact process I used on myself.
+          Real results from real clients.
         </div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11.5, color: muted, marginTop: 2 }}>
           See all results ↓
@@ -210,39 +202,42 @@ function Hero({ theme }) {
   const WHATSAPP = 'https://wa.me/353833604182?text=Hi%20Ronan%2C%20I%27m%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F';
 
   return (
-    <section style={{
-      background: bg, minHeight: '100dvh', paddingTop: 56,
+    <section className="hero-section" style={{
+      background: bg, minHeight: '100dvh',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'center', padding: '80px 24px 60px',
+      justifyContent: 'center',
       boxSizing: 'border-box',
     }}>
-      {/* Single centred column on phones; copy left / media right from 900px,
-          which is where a 480px column starts to look marooned. */}
+      {/* Phones stack copy -> video -> CTA so the video is reachable without
+          scrolling; from 900px the CTA rejoins the copy column on the left
+          and the media sits alongside. */}
       <div className="hero-grid">
         <div className="hero-copy">
-          <div style={{
+          <div className="hero-eyebrow" style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
             letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: '#D42B2B', marginBottom: 16,
+            color: '#D42B2B',
           }}>
             Online Transformation Coaching
           </div>
-          <h1 style={{
+          <h1 className="hero-title" style={{
             fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif",
-            fontSize: 'clamp(52px, 7.5vw, 88px)', lineHeight: 0.98,
+            lineHeight: 0.98,
             letterSpacing: '0.02em', textTransform: 'uppercase',
-            color: fg, margin: '0 0 18px',
+            color: fg, margin: '0 0 16px',
           }}>
             Transform<br />Your Body.<br />
             <span style={{ color: '#D42B2B' }}>Transform</span> Your Life.
           </h1>
           <p className="hero-lede" style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.65,
-            color: muted, margin: '0 0 28px',
+            color: muted, margin: 0,
           }}>
             Personalised nutrition &amp; training coaching built around your life — real results, no fad diets.
           </p>
+        </div>
 
+        <div className="hero-cta">
           <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
             display: 'inline-block',
             background: '#D42B2B', color: '#FFFFFF',

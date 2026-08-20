@@ -118,7 +118,7 @@ function StatBar({ theme }) {
   // No star rating here: there are no collected ratings to back one up.
   const stats = [
     { num: '24/7', label: 'Support Access' },
-    { num: '2 Wk', label: 'Risk Free' },
+    { num: '2 Wk', label: 'Money Back Guarantee' },
   ];
   return (
     <div style={{

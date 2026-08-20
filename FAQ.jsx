@@ -6,7 +6,7 @@ const FAQS = [
   { q: 'What does the coaching include?', a: 'You get a fully personalised training plan, a nutrition guide tailored to your goal, weekly check-ins, and direct WhatsApp access to me.' },
   { q: 'How long until I see results?', a: 'Most clients see noticeable changes within 3–4 weeks. Significant transformation typically takes 10–16 weeks depending on your starting point and goal.' },
   { q: 'Do I have to follow a strict diet?', a: 'Absolutely not. My nutrition approach is flexible — built around foods you actually enjoy. Sustainability is the whole point.' },
-  { q: 'How do I get started?', a: 'Message me directly on WhatsApp. We\'ll have a free 15-minute call to see if we\'re a good fit, then I\'ll get your plan built.' },
+  { q: 'How do I get started?', a: 'Message me directly on WhatsApp. No high pressure sales call, just a chat about your goals.' },
 ];
 
 function FAQContent({ theme }) {
