@@ -226,8 +226,9 @@ function Hero({ theme }) {
             letterSpacing: '0.02em', textTransform: 'uppercase',
             color: fg, margin: '0 0 16px',
           }}>
-            Transform<br />Your Body.<br />
-            <span style={{ color: '#D42B2B' }}>Transform</span> Your Life.
+            Build the body you’re <span style={{ color: '#D42B2B' }}>proud of</span>
+            <br />
+            Keep it <span style={{ color: '#D42B2B' }}>for life</span>
           </h1>
           <p className="hero-lede" style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.65,

@@ -19,6 +19,13 @@ const TRANSFORMS = [
     note: 'Noticeably leaner through the waist, with better posture and shape.',
   },
   {
+    name: 'Online Client',
+    type: 'Fat Loss Transformation',
+    before: 'assets/transformations/client3-before.jpg',
+    after:  'assets/transformations/client3-after.jpg',
+    note: 'Significant fat loss through the midsection with muscle kept on.',
+  },
+  {
     name: 'Ronan O’Callaghan',
     type: 'Your Coach — My Own Transformation',
     before: 'assets/transformations/ronan-before.jpg',
