@@ -52,7 +52,7 @@ function Footer({ theme }) {
     <footer style={{ background: bg, borderTop: `1px solid ${border}`, padding: '32px 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, lineHeight: 1 }}>
-          <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, letterSpacing: 2, color: '#D42B2B' }}>RONANOC</span>
+          <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 24, letterSpacing: 2, color: '#D42B2B' }}>ROC</span>
           <span style={{ width: 1, height: 18, background: '#555', flexShrink: 0, display: 'inline-block' }}></span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, color: fg }}>coaching</span>
         </div>
@@ -69,7 +69,7 @@ function Footer({ theme }) {
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>Privacy Policy</a>
         </div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: muted }}>
-          © {new Date().getFullYear()} RONANOCfitness. All rights reserved.
+          © {new Date().getFullYear()} ROC Coaching. All rights reserved.
         </div>
       </div>
     </footer>

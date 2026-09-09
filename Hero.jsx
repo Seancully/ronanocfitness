@@ -3,7 +3,7 @@
 function Logo({ theme }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
-      <span style={{ fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif", fontSize: 28, letterSpacing: 2, color: '#D42B2B' }}>RONANOC</span>
+      <span style={{ fontFamily: "'Bebas Neue', 'Arial Narrow', sans-serif", fontSize: 28, letterSpacing: 2, color: '#D42B2B' }}>ROC</span>
       <span style={{ width: 1, height: 22, background: '#555', flexShrink: 0, display: 'inline-block' }}></span>
       <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 500, color: theme === 'light' ? '#0D0D0D' : '#FFFFFF' }}>coaching</span>
     </div>
