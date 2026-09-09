@@ -35,26 +35,58 @@ function StarRow() {
   return <div style={{ color: '#F5C518', fontSize: 14, letterSpacing: 3, marginBottom: 12 }}>★★★★★</div>;
 }
 
-function TestimonialCard({ t, theme }) {
+function TestimonialCard({ t, theme, expanded, onToggle, minHeight }) {
   const cardBg = theme === 'light' ? '#F2F2F2' : '#1F1F1F';
   const cardBorder = theme === 'light' ? '#E0E0E0' : '#2A2A2A';
   const fg = theme === 'light' ? '#111' : '#DDD';
   const muted = theme === 'light' ? '#777' : '#888';
+
+  // Only show "Read more" on quotes that actually overflow the clamp. Measured
+  // rather than guessed from length, since the line count shifts with width.
+  const quoteRef = React.useRef(null);
+  const [overflows, setOverflows] = React.useState(false);
+
+  React.useLayoutEffect(() => {
+    const el = quoteRef.current;
+    if (!el) return;
+    const check = () => {
+      if (expanded) return; // clamp is off while expanded, so it can't be measured
+      setOverflows(el.scrollHeight > el.clientHeight + 1);
+    };
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, [expanded]);
 
   return (
     <div style={{
       background: cardBg, border: `1px solid ${cardBorder}`,
       borderRadius: 16, padding: '22px 20px',
       minWidth: 280, maxWidth: 300, flexShrink: 0,
-      display: 'flex', flexDirection: 'column', gap: 0,
+      minHeight, // common baseline so a sibling expanding never shrinks this
+      display: 'flex', flexDirection: 'column',
     }}>
       <StarRow />
-      <p style={{
-        fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.65,
-        color: fg, margin: '0 0 16px',
-      }}>
+      <p
+        ref={quoteRef}
+        className={`t-quote${expanded ? '' : ' is-clamped'}`}
+        style={{
+          fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.65,
+          color: fg, margin: 0,
+        }}
+      >
         "{t.quote}"
       </p>
+
+      {(overflows || expanded) && (
+        <button className="t-more" onClick={onToggle} aria-expanded={expanded}>
+          {expanded ? 'Show less' : 'Read more'}
+        </button>
+      )}
+
+      {/* Spacer keeps every attribution on the same baseline across the row */}
+      <div style={{ flex: 1, minHeight: 16 }} />
+
       <div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: fg }}>— {t.name}</div>
         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#D42B2B', marginTop: 3 }}>{t.goal}</div>
@@ -64,6 +96,29 @@ function TestimonialCard({ t, theme }) {
 }
 
 function Testimonials({ theme }) {
+  const [expanded, setExpanded] = React.useState(null);
+
+  // Measure the tallest collapsed card once and hold every card to it. Plain
+  // `align-items: stretch` would drag all the siblings taller when one is
+  // expanded; top-aligning alone would let them snap shorter. A shared
+  // min-height keeps the row level in both states.
+  const rowRef = React.useRef(null);
+  const [baseHeight, setBaseHeight] = React.useState(undefined);
+
+  React.useLayoutEffect(() => {
+    const row = rowRef.current;
+    if (!row || expanded !== null) return; // only valid while all are collapsed
+    const measure = () => {
+      const heights = [...row.children].map(c => c.offsetHeight);
+      if (heights.length) setBaseHeight(Math.max(...heights));
+    };
+    // Webfonts change the line count, so re-measure once they land.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [expanded]);
+
   const bg = theme === 'light' ? '#FFFFFF' : '#0D0D0D';
   const fg = theme === 'light' ? '#0D0D0D' : '#FFFFFF';
   const cardBg = theme === 'light' ? '#F2F2F2' : '#1F1F1F';
@@ -110,8 +165,17 @@ function Testimonials({ theme }) {
           alignItems: 'flex-start',
           padding: '4px 24px 16px', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch',
-        }}>
-          {TESTIMONIALS.map((t, i) => <TestimonialCard key={i} t={t} theme={theme} />)}
+        }} ref={rowRef}>
+          {TESTIMONIALS.map((t, i) => (
+            <TestimonialCard
+              key={i}
+              t={t}
+              theme={theme}
+              expanded={expanded === i}
+              onToggle={() => setExpanded(expanded === i ? null : i)}
+              minHeight={baseHeight}
+            />
+          ))}
         </div>
       )}
     </section>
