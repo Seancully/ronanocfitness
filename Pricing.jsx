@@ -54,7 +54,7 @@ function PlanCard({ plan, theme, compact }) {
           </div>
         </div>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: muted, margin: '0 0 22px', lineHeight: 1.6 }}>
-          Billed monthly. Cancel any time.
+          Billed weekly or monthly. Cancel any time.
         </p>
 
         <div style={{ height: 1, background: border, marginBottom: 18 }} />
