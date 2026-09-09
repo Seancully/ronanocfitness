@@ -145,6 +145,7 @@
 <body id="hero">
   <div id="root"></div>
 
+  <script type="text/babel" src="config.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Hero.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Testimonials.jsx?v=DEPLOY_VERSION"></script>
   <script type="text/babel" src="Transformations.jsx?v=DEPLOY_VERSION"></script>
@@ -268,7 +269,7 @@
 
           {/* WhatsApp floating button */}
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F`}
+            href={WA_LINK}
             target="_blank" rel="noopener noreferrer"
             title="Message on WhatsApp"
             style={{

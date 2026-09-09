@@ -199,7 +199,7 @@ function Hero({ theme }) {
   const bg = theme === 'light' ? '#F2F2F2' : '#0D0D0D';
   const fg = theme === 'light' ? '#0D0D0D' : '#FFFFFF';
   const muted = theme === 'light' ? '#555' : '#888';
-  const WHATSAPP = 'https://wa.me/353833604182?text=Hi%20Ronan%2C%20I%27m%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F';
+  const WHATSAPP = WA_LINK;
 
   return (
     <section className="hero-section" style={{

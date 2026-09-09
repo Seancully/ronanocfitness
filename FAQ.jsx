@@ -88,7 +88,7 @@ function FAQContent({ theme }) {
           Message me directly — I reply within 24 hours.
         </p>
         <a
-          href="https://wa.me/353833604182?text=Hi%20Ronan%2C%20I%20have%20a%20question%20about%20your%20coaching."
+          href={WA_LINK}
           target="_blank" rel="noopener noreferrer"
           className="btn-pill"
           style={{

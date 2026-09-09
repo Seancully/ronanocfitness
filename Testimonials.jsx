@@ -5,6 +5,11 @@
 // profile photos, which shouldn't go on a public page without each client's ok.
 const TESTIMONIALS = [
   {
+    quote: "I really like Ronan as my coach because as a girl, I was quite nervous about the gym and certain exercises but he always breaks everything down and makes me feel so much more comfortable. Any question I have, he always answers and never makes me feel silly for asking. After my holiday, I realised how unhappy I actually was, but in just a month my whole mindset has completely changed with Ronan's help. He's shown me that I can still enjoy my food while working towards my goals, and I already feel so much more confident and positive. I'm really excited to see what the future brings and where I can get with the help of Ronan!",
+    name: "Abbie H.",
+    goal: "Confidence & Mindset",
+  },
+  {
     quote: "Brilliant coaching service. Constant feedback and communication, with everything adapted around my own routine and GAA training. The plan was practical, easy to stick to, and helped me get back into playable shape while improving my fitness and weight. Highly recommend.",
     name: "Caelum O'B.",
     goal: "GAA / Sports Performance",
@@ -46,7 +51,7 @@ function TestimonialCard({ t, theme }) {
       <StarRow />
       <p style={{
         fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.65,
-        color: fg, margin: '0 0 16px', flex: 1,
+        color: fg, margin: '0 0 16px',
       }}>
         "{t.quote}"
       </p>
@@ -102,7 +107,7 @@ function Testimonials({ theme }) {
           // back to flex-start when it overflows — without it, a centered
           // overflowing row clips its first card out of scroll reach.
           justifyContent: 'safe center',
-          alignItems: 'stretch',
+          alignItems: 'flex-start',
           padding: '4px 24px 16px', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch',
         }}>

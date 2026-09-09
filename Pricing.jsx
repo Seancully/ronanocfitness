@@ -1,8 +1,5 @@
 // Pricing.jsx — single coaching plan + money-back guarantee
 
-const WHATSAPP_BASE = 'https://wa.me/353833604182?text=';
-const waLink = (msg) => WHATSAPP_BASE + encodeURIComponent(msg);
-
 const PLANS = {
   A: {
     name: '1 on 1 Coaching',
@@ -19,7 +16,6 @@ const PLANS = {
       'Accountability & education',
     ],
     cta: 'Start Coaching',
-    waMsg: "Hi Ronan, I'd like to sign up for 1 on 1 Coaching (€20/week). Can you send me next steps?",
   },
 };
 
@@ -72,7 +68,7 @@ function PlanCard({ plan, theme, compact }) {
           ))}
         </div>
 
-        <a href={waLink(plan.waMsg)} target="_blank" rel="noopener noreferrer" className="btn-pill" style={{
+        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-pill" style={{
           display: 'block', textAlign: 'center', marginTop: 22,
           background: plan.featured ? accent : 'transparent',
           color: plan.featured ? '#FFFFFF' : fg,

@@ -16,7 +16,7 @@ function CTASection({ theme }) {
           Message me directly on WhatsApp — I'll get back to you within 24 hours.
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="https://wa.me/353833604182?text=Hi%20Ronan%2C%20I%27m%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F"
+          <a href={WA_LINK}
             target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-lg" style={{
               display: 'inline-block',
               background: '#D42B2B', color: '#FFFFFF',
@@ -63,7 +63,7 @@ function Footer({ theme }) {
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>TikTok</a>
           <a href="https://youtube.com/@ronanocfitness" target="_blank" rel="noopener noreferrer"
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>YouTube</a>
-          <a href="https://wa.me/353833604182?text=Hi%20Ronan%2C%20I'm%20interested%20in%20your%20coaching%20packages%2C%20can%20you%20send%20me%20more%20information%3F" target="_blank" rel="noopener noreferrer"
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>WhatsApp</a>
           <a href="privacy-policy.html"
             style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: muted, textDecoration: 'none' }}>Privacy Policy</a>
